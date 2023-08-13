@@ -3,7 +3,7 @@ import "./styles/read-view.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAbsolutePath } from "../shared/infrastructure/routing";
-import { useAdFinder } from "./../shared/hooks";
+import { useAdFinder } from "../shared/hooks";
 import { useSelector } from "react-redux";
 import { CreateButton } from "../shared/components/create-button/styles/create-button-styling";
 import AdCard from "../shared/components/ad-card/ad-card";
@@ -27,11 +27,6 @@ const ReadView = () => {
     setProductAds(ads);
   }, []);
 
-  const handleAdEdition = (adId) => {
-    const editViewPath = getAbsolutePath("edit-view");
-    navigate(`${editViewPath}/${adId}`);
-  };
-
   return (
     <>
       {productAds.length > 0 ? (
@@ -43,9 +38,7 @@ const ReadView = () => {
                   <div></div>
                 </AdModalReadView>
                 <div className="button-container">
-                  <button id="Edit" onClick={() => handleAdEdition(ad.id)}>
-                    Edit
-                  </button>
+                  <button id="Edit">Edit</button>
                   <button id="Delete">Delete</button>
                 </div>
                 <AdCard

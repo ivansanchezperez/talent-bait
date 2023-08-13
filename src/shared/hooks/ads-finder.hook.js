@@ -6,5 +6,10 @@ export const useAdFinder = (adStore) => {
     return adsFinded;
   };
 
-  return { findAdByProductId };
+  const findAdById = (id) => {
+    const adsFinded = adStore.filter((ad) => ad.id === id);
+    return adsFinded;
+  };
+
+  return { findAdByProductId, findAdById };
 };

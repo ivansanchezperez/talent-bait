@@ -4,7 +4,7 @@ import FBMockImage from "./../../assets/fb-admockups.jpg";
 const initialState = {
   ads: [
     {
-      id: 0,
+      id: "0",
       productId: 0,
       content: {
         headline: "",
@@ -15,7 +15,7 @@ const initialState = {
       },
     },
     {
-      id: 1,
+      id: "1",
       productId: 1,
       content: {
         headline: "headline",
@@ -26,7 +26,7 @@ const initialState = {
       },
     },
     {
-      id: 2,
+      id: "2",
       productId: 1,
       content: {
         headline: "headline-2",
@@ -37,7 +37,7 @@ const initialState = {
       },
     },
     {
-      id: 3,
+      id: "3",
       productId: 1,
       content: {
         headline: "headline-3",

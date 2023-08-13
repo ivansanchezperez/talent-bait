@@ -6,6 +6,7 @@ import { AppLayout } from "./app.layout";
 
 const IndexViewPage = React.lazy(() => import("./../index-view/index-view"));
 const ReadViewPage = React.lazy(() => import("./../read-view/read-view"));
+const EditViewPage = React.lazy(() => import("./../edit-view/edit-view"));
 
 export const AppRouter = () => {
   return (
@@ -22,6 +23,10 @@ export const AppRouter = () => {
         <Route
           path={`${getRelativePath("read-view") + "/:productId"}`}
           element={<ReadViewPage />}
+        />
+        <Route
+          path={`${getRelativePath("edit-view") + "/:adId"}`}
+          element={<EditViewPage />}
         />
         <Route
           path={"*"}
