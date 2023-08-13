@@ -6,6 +6,7 @@ import { getAbsolutePath } from "../shared/infrastructure/routing";
 import { useAdFinder } from "./../shared/hooks";
 import { useSelector } from "react-redux";
 import { CreateButton } from "../shared/components/create-button/styles/create-button-styling";
+import AdCard from "../shared/components/ad-card/ad-card";
 
 const ReadView = () => {
   const params = useParams();
@@ -24,7 +25,18 @@ const ReadView = () => {
   return (
     <>
       {productAds.length > 0 ? (
-        <></>
+        <>
+          {productAds.map((product) => {
+            return (
+              <AdCard
+                image={product.productImage}
+                name={product.productName}
+                description={product.productDescription}
+                price={product.price}
+              />
+            );
+          })}
+        </>
       ) : (
         <div className="read-view__no-ads">
           <span className="read-view__no-ads-text">
@@ -34,18 +46,6 @@ const ReadView = () => {
         </div>
       )}
     </>
-    // <ThreeColumnGrid>
-    //   {productData.products.map((product) => {
-    //     return (
-    //       <ProductCard
-    //         image={product.productImage}
-    //         name={product.productName}
-    //         description={product.productDescription}
-    //         price={product.price}
-    //       />
-    //     );
-    //   })}
-    // </ThreeColumnGrid>
   );
 };
 

@@ -7,6 +7,16 @@ const initialState = {
       productId: 0,
       content: { headline: "", image: "", description: "", CTAText: "" },
     },
+    {
+      id: 1,
+      productId: 1,
+      content: {
+        headline: "headline",
+        image: "image",
+        description: "description",
+        CTAText: "text",
+      },
+    },
   ],
 };
 

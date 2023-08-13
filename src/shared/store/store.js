@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
-import companyFacilityReducer from "./productsAdsReducer";
+import productsAdsReducer from "./productsAdsReducer";
 
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
@@ -11,7 +11,7 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, companyFacilityReducer);
+const persistedReducer = persistReducer(persistConfig, productsAdsReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
