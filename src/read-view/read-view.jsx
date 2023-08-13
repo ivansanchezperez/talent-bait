@@ -112,7 +112,9 @@ const ReadView = () => {
         </div>
       )}
       <ButtonWrapper>
-        <CreateButton>Create</CreateButton>
+        <CreateButton onClick={() => navigate(getAbsolutePath("create-view"))}>
+          Create
+        </CreateButton>
       </ButtonWrapper>
     </>
   );
