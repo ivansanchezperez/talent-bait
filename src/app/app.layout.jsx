@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Waiting } from "./../shared/components/waiting/waiting";
+import { Waiting } from "../shared/components/waiting/waiting";
 import styled from "styled-components";
 
 const Layout = styled.div`

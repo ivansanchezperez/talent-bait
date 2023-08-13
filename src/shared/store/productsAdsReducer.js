@@ -63,8 +63,19 @@ export const productsAdsSlice = createSlice({
         state.ads = [...state.ads, newAd];
       }
     },
+    removeAd: (state, action) => {
+      const adIdToRemove = action.payload;
+      state.ads = state.ads.filter((ad) => ad.id !== adIdToRemove);
+    },
+    updateAd: (state, action) => {
+      const updatedAd = action.payload;
+      const adIndex = state.ads.findIndex((ad) => ad.id === updatedAd.id);
+      if (adIndex !== -1) {
+        state.ads[adIndex] = { ...state.ads[adIndex], ...updatedAd };
+      }
+    },
   },
 });
 
-export const { addCompany } = productsAdsSlice.actions;
+export const { newAd, removeAd, updateAd } = productsAdsSlice.actions;
 export default productsAdsSlice.reducer;

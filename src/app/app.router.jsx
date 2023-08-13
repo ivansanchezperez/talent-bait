@@ -1,12 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import React from "react";
-import { getRelativePath } from "./../shared/infrastructure/routing";
+import { getRelativePath } from "../shared/infrastructure/routing";
 import { AppLayout } from "./app.layout";
 
-const IndexViewPage = React.lazy(() => import("./../index-view/index-view"));
-const ReadViewPage = React.lazy(() => import("./../read-view/read-view"));
-const EditViewPage = React.lazy(() => import("./../edit-view/edit-view"));
+const IndexViewPage = React.lazy(() => import("../index-view/index-view"));
+const ReadViewPage = React.lazy(() => import("../read-view/read-view"));
+const EditViewPage = React.lazy(() => import("../edit-view/edit-view"));
 
 export const AppRouter = () => {
   return (

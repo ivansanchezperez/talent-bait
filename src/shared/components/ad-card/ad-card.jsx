@@ -1,5 +1,5 @@
-import productData from "./../../../assets/shop_data.json";
-import { useState } from "react";
+import productData from "../../../assets/shop_data.json";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import FBMockImage from "./../../../assets/fb-admockups.jpg";
 import {
@@ -25,6 +25,7 @@ const AdCard = ({
   descriptionTitle,
   descriptionText,
   CTAText,
+  emitAdForm,
 }) => {
   const initialAdFormState = {
     id: id ?? uuidv4(),
@@ -47,6 +48,10 @@ const AdCard = ({
     }
     // Handle the file upload logic here
   };
+
+  useEffect(() => {
+    // emitAdForm(adForm);
+  });
 
   return (
     <AdWrapper key={id}>

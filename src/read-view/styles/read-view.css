@@ -7,3 +7,27 @@
 .read-view__no-ads-text {
   text-align: center;
 }
+
+.read-view__modal-button-wrapper {
+  display: flex;
+  column-gap: 15px;
+  justify-content: end;
+  margin-top: 15px;
+}
+
+.read-view__modal-button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: white;
+  width: 20%;
+}
+
+.read-view__modal-button--green {
+  background-color: #0c890c;
+}
+
+.read-view__modal-button--red {
+  background-color: #d93131;
+}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TwoColumnGrid = styled.div`
   display: block;
   > * {
-    margin-top: 15%;
+    margin-top: 5%;
   }
 
   @media (min-width: 1024px) {
@@ -12,6 +12,12 @@ export const TwoColumnGrid = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     column-gap: 100px;
+  }
+
+  @media (max-width: 1024px) {
+    > * {
+      margin-top: 15%;
+    }
   }
 `;
 

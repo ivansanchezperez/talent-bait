@@ -1,27 +1,38 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAbsolutePath } from "../shared/infrastructure/routing";
 import { useAdFinder } from "../shared/hooks";
 import { useSelector } from "react-redux";
-import { CreateButton } from "../shared/components/create-button/styles/create-button-styling";
 import AdCard from "../shared/components/ad-card/ad-card";
 import {
-  TwoColumnGrid,
-  AdModalWrapper,
-  AdModalReadView,
-} from "./styles/edit-view-styling";
+  CreateButton,
+  ButtonWrapper,
+} from "../shared/components/create-button/styles/create-button-styling";
+import { useAppDispatch } from "../shared/store/store";
+import { updateAd } from "../shared/store/productsAdsReducer";
+import { toast } from "sonner";
 
 const EditView = () => {
   const params = useParams();
   const productAdsStore = useSelector((state) => state.ads);
+  const [editedAd, setEditedAd] = useState(null);
 
   const [productAds, setProductAds] = useState([]);
   const { findAdById } = useAdFinder(productAdsStore);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const ads = findAdById(params.adId);
     setProductAds(ads);
   }, []);
+
+  const handleAdForm = (adForm) => {
+    setEditedAd(adForm);
+  };
+
+  const emitSaveAdForm = () => {
+    dispatch(updateAd(editedAd));
+    toast.success("Changes were saved successfully");
+  };
 
   return (
     <>
@@ -34,9 +45,13 @@ const EditView = () => {
             descriptionTitle={ad.content.descriptionTitle}
             descriptionText={ad.content.descriptionText}
             CTAText={ad.content.CTAText}
+            emitAdForm={handleAdForm}
           />
         );
       })}
+      <ButtonWrapper>
+        <CreateButton onClick={() => emitSaveAdForm()}>Save</CreateButton>
+      </ButtonWrapper>
     </>
   );
 };
