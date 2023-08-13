@@ -1,20 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
+import FBMockImage from "./../../assets/fb-admockups.jpg";
 
 const initialState = {
   ads: [
     {
       id: 0,
       productId: 0,
-      content: { headline: "", image: "", description: "", CTAText: "" },
+      content: {
+        headline: "",
+        image: "",
+        descriptionTitle: "",
+        descriptionText: "",
+        CTAText: "",
+      },
     },
     {
       id: 1,
       productId: 1,
       content: {
         headline: "headline",
-        image: "image",
-        description: "description",
+        image: FBMockImage,
+        descriptionTitle: "description-title",
+        descriptionText: "description-text",
         CTAText: "text",
+      },
+    },
+    {
+      id: 2,
+      productId: 1,
+      content: {
+        headline: "headline-2",
+        image: FBMockImage,
+        descriptionTitle: "description-title-2",
+        descriptionText: "description-text-2",
+        CTAText: "text-2",
+      },
+    },
+    {
+      id: 3,
+      productId: 1,
+      content: {
+        headline: "headline-3",
+        image: FBMockImage,
+        descriptionTitle: "description-title-3",
+        descriptionText: "description-text-3",
+        CTAText: "text-3",
       },
     },
   ],

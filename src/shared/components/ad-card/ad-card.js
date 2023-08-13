@@ -1,6 +1,7 @@
 import productData from "./../../../assets/shop_data.json";
 import { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
+import FBMockImage from "./../../../assets/fb-admockups.jpg";
 import {
   AdHeader,
   AdLogo,
@@ -17,8 +18,24 @@ import {
   AdEditButton,
 } from "./styles/ad-card-styling";
 
-const AdCard = () => {
+const AdCard = ({
+  id,
+  headline,
+  image,
+  descriptionTitle,
+  descriptionText,
+  CTAText,
+}) => {
+  const initialAdFormState = {
+    id: id ?? uuidv4(),
+    headline: headline ?? "",
+    image: image ?? FBMockImage,
+    descriptionTitle: descriptionTitle ?? "",
+    descriptionText: descriptionText ?? "",
+    CTAText: CTAText ?? "",
+  };
   const [isFileInputVisible, setFileInputVisible] = useState(false);
+  const [adForm, setAdForm] = useState(initialAdFormState);
 
   const toggleFileInput = () => {
     setFileInputVisible(!isFileInputVisible);
@@ -26,14 +43,13 @@ const AdCard = () => {
 
   const handleFileInputChange = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
-      // No file selected, hide the input
       setFileInputVisible(false);
     }
     // Handle the file upload logic here
   };
 
   return (
-    <AdWrapper>
+    <AdWrapper key={id}>
       <AdSection>
         <AdHeader>
           <AdLogo>
@@ -48,7 +64,7 @@ const AdCard = () => {
             <span>Sponsored · 🌍</span>
           </AdHeaderDescription>
         </AdHeader>
-        <AdHeadLine />
+        <AdHeadLine value={adForm.headline} />
         <AdImage>
           <figure>
             <div style={{ position: "relative" }}>
@@ -62,7 +78,7 @@ const AdCard = () => {
                   }
                 }}
               />
-              <img src={productData.logo} alt="logo" />
+              <img src={adForm.image} alt="logo" />
               <AdEditButton
                 onClick={toggleFileInput} // Toggle the input on clicking the image
               >
@@ -74,12 +90,12 @@ const AdCard = () => {
         <AdDescriptionWrapper>
           <div>
             <span style={{ fontSize: "15px" }}>sportinggoods.com</span>
-            <AdDescriptionTitle />
-            <AdDescriptionText />
+            <AdDescriptionTitle value={adForm.descriptionTitle} />
+            <AdDescriptionText value={adForm.descriptionText} />
           </div>
           <div>
             <AdCTA>
-              <input value={"Download"} />
+              <input value={adForm.CTAText} />
             </AdCTA>
           </div>
         </AdDescriptionWrapper>

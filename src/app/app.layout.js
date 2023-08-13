@@ -3,7 +3,6 @@ import { Waiting } from "./../shared/components/waiting/waiting";
 import styled from "styled-components";
 
 const Layout = styled.div`
-  background-color: #1e1f46;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

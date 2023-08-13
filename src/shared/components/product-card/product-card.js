@@ -19,7 +19,7 @@ const ProductCard = ({ id, image, name, description, price }) => {
   };
 
   return (
-    <ProductCardWrapper>
+    <ProductCardWrapper key={id}>
       <ProductCardImage bgimage={image} />
       <ProductCardInfoWrapper>
         <ProductCardName onClick={handleNavigateToReadView}>
