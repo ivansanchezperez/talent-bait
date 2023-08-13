@@ -27,11 +27,11 @@ export const AppRouter = () => {
           element={<ReadViewPage />}
         />
         <Route
-          path={`${getRelativePath("create-view")}`}
+          path={`${getRelativePath("create-view") + "/:productId"}`}
           element={<CreateViewPage />}
         />
         <Route
-          path={`${getRelativePath("edit-view") + "/:adId"}`}
+          path={`${getRelativePath("edit-view") + "/:productId/:adId"}`}
           element={<EditViewPage />}
         />
         <Route

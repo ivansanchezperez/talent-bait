@@ -32,6 +32,7 @@ const ReadView = () => {
   const { findAdByProductId } = useAdFinder(productAdsStore);
 
   useEffect(() => {
+    debugger;
     if (params.length === 0) return navigate(getAbsolutePath("index-view"));
     const ads = findAdByProductId(params.productId);
     setProductAds(ads);
@@ -39,7 +40,12 @@ const ReadView = () => {
 
   const handleAdEdition = (adId) => {
     const editViewPath = getAbsolutePath("edit-view");
-    navigate(`${editViewPath}/${adId}`);
+    navigate(`${editViewPath}/${params.productId}/${adId}`);
+  };
+
+  const handleAdCreation = () => {
+    const createView = getAbsolutePath("create-view");
+    navigate(`${createView}/${params.productId}`);
   };
 
   const handleAdRemove = () => {
@@ -112,9 +118,7 @@ const ReadView = () => {
         </div>
       )}
       <ButtonWrapper>
-        <CreateButton onClick={() => navigate(getAbsolutePath("create-view"))}>
-          Create
-        </CreateButton>
+        <CreateButton onClick={() => handleAdCreation()}>Create</CreateButton>
       </ButtonWrapper>
     </>
   );

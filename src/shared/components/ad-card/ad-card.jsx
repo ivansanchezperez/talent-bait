@@ -19,15 +19,18 @@ import {
 } from "./styles/ad-card-styling";
 
 const AdCard = ({
+  productId,
   id,
   headline,
   image,
   descriptionTitle,
   descriptionText,
   CTAText,
+  isEdition,
   emitAdForm,
 }) => {
   const initialAdFormState = {
+    productId: null,
     id: id ?? uuidv4(),
     headline: headline ?? "",
     image: image ?? FBMockImage,
@@ -49,9 +52,25 @@ const AdCard = ({
     // Handle the file upload logic here
   };
 
+  const handleInputValues = (event, inputName) => {
+    const adFormNewValue = { ...adForm, [inputName]: event.target.value };
+    setAdForm(adFormNewValue);
+  };
+
   useEffect(() => {
-    // emitAdForm(adForm);
-  });
+    const formattedAdForm = {
+      id: adForm.id,
+      productId: Number(productId),
+      content: {
+        headline: adForm.headline,
+        image: adForm.image,
+        descriptionTitle: adForm.descriptionTitle,
+        descriptionText: adForm.descriptionText,
+        CTAText: adForm.CTAText,
+      },
+    };
+    if (isEdition) emitAdForm(formattedAdForm);
+  }, [adForm]);
 
   return (
     <AdWrapper key={id}>
@@ -69,7 +88,10 @@ const AdCard = ({
             <span>Sponsored · 🌍</span>
           </AdHeaderDescription>
         </AdHeader>
-        <AdHeadLine value={adForm.headline} />
+        <AdHeadLine
+          value={adForm.headline}
+          onChange={(event) => handleInputValues(event, "headline")}
+        />
         <AdImage>
           <figure>
             <div style={{ position: "relative" }}>
@@ -95,12 +117,21 @@ const AdCard = ({
         <AdDescriptionWrapper>
           <div>
             <span style={{ fontSize: "15px" }}>sportinggoods.com</span>
-            <AdDescriptionTitle value={adForm.descriptionTitle} />
-            <AdDescriptionText value={adForm.descriptionText} />
+            <AdDescriptionTitle
+              value={adForm.descriptionTitle}
+              onChange={(event) => handleInputValues(event, "descriptionTitle")}
+            />
+            <AdDescriptionText
+              value={adForm.descriptionText}
+              onChange={(event) => handleInputValues(event, "descriptionText")}
+            />
           </div>
           <div>
             <AdCTA>
-              <input value={adForm.CTAText} />
+              <input
+                value={adForm.CTAText}
+                onChange={(event) => handleInputValues(event, "CTAText")}
+              />
             </AdCTA>
           </div>
         </AdDescriptionWrapper>

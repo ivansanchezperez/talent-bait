@@ -8,7 +8,7 @@ import {
   ButtonWrapper,
 } from "../shared/components/create-button/styles/create-button-styling";
 import { useAppDispatch } from "../shared/store/store";
-import { updateAd } from "../shared/store/productsAdsReducer";
+import { newAd } from "../shared/store/productsAdsReducer";
 import { toast } from "sonner";
 
 const CreateView = () => {
@@ -26,17 +26,22 @@ const CreateView = () => {
   }, []);
 
   const handleAdForm = (adForm) => {
+    console.log("adFormCreate: ", adForm);
     setEditedAd(adForm);
   };
 
   const emitSaveAdForm = () => {
-    dispatch(updateAd(editedAd));
+    dispatch(newAd(editedAd));
     toast.success("New Ad created successfully");
   };
 
   return (
     <>
-      <AdCard emitAdForm={handleAdForm} />
+      <AdCard
+        productId={params.productId}
+        emitAdForm={handleAdForm}
+        isEdition
+      />
 
       <ButtonWrapper>
         <CreateButton onClick={() => emitSaveAdForm()}>Create</CreateButton>

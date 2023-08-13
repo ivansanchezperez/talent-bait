@@ -21,6 +21,7 @@ const EditView = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    debugger;
     const ads = findAdById(params.adId);
     setProductAds(ads);
   }, []);
@@ -39,12 +40,14 @@ const EditView = () => {
       {productAds.map((ad) => {
         return (
           <AdCard
+            productId={params.productId}
             id={ad.id}
             image={ad.content.image}
             headline={ad.content.headline}
             descriptionTitle={ad.content.descriptionTitle}
             descriptionText={ad.content.descriptionText}
             CTAText={ad.content.CTAText}
+            isEdition
             emitAdForm={handleAdForm}
           />
         );
