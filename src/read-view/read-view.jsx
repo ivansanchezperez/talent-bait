@@ -32,10 +32,10 @@ const ReadView = () => {
   const { findAdByProductId } = useAdFinder(productAdsStore);
 
   useEffect(() => {
-    debugger;
     if (params.length === 0) return navigate(getAbsolutePath("index-view"));
     const ads = findAdByProductId(params.productId);
     setProductAds(ads);
+    window.scrollTo(0, 0);
   }, []);
 
   const handleAdEdition = (adId) => {
@@ -83,33 +83,35 @@ const ReadView = () => {
         </div>
       </GlobalModal>
       {productAds.length > 0 ? (
-        <TwoColumnGrid>
-          {productAds.map((ad) => {
-            return (
-              <AdModalWrapper>
-                <AdModalReadView>
-                  <div></div>
-                </AdModalReadView>
-                <div className="button-container">
-                  <button id="Edit" onClick={() => handleAdEdition(ad.id)}>
-                    Edit
-                  </button>
-                  <button id="Delete" onClick={() => showModal(ad.id)}>
-                    Delete
-                  </button>
-                </div>
-                <AdCard
-                  id={ad.id}
-                  image={ad.content.image}
-                  headline={ad.content.headline}
-                  descriptionTitle={ad.content.descriptionTitle}
-                  descriptionText={ad.content.descriptionText}
-                  CTAText={ad.content.CTAText}
-                />
-              </AdModalWrapper>
-            );
-          })}
-        </TwoColumnGrid>
+        <div style={{ marginTop: "90px" }}>
+          <TwoColumnGrid>
+            {productAds.map((ad) => {
+              return (
+                <AdModalWrapper>
+                  <AdModalReadView>
+                    <div></div>
+                  </AdModalReadView>
+                  <div className="button-container">
+                    <button id="Edit" onClick={() => handleAdEdition(ad.id)}>
+                      Edit
+                    </button>
+                    <button id="Delete" onClick={() => showModal(ad.id)}>
+                      Delete
+                    </button>
+                  </div>
+                  <AdCard
+                    id={ad.id}
+                    image={ad.content.image}
+                    headline={ad.content.headline}
+                    descriptionTitle={ad.content.descriptionTitle}
+                    descriptionText={ad.content.descriptionText}
+                    CTAText={ad.content.CTAText}
+                  />
+                </AdModalWrapper>
+              );
+            })}
+          </TwoColumnGrid>
+        </div>
       ) : (
         <div className="read-view__no-ads">
           <span className="read-view__no-ads-text">

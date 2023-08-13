@@ -23,6 +23,7 @@ const EditView = () => {
   const [productAds, setProductAds] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const ads = findAdById(params.adId);
     setProductAds(ads);
   }, []);

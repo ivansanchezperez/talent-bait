@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Waiting } from "../shared/components/waiting/waiting";
+import Header from "../shared/components/header/header";
 import styled from "styled-components";
 
 const Layout = styled.div`
@@ -15,6 +16,7 @@ const Layout = styled.div`
 export const AppLayout = () => {
   return (
     <Layout>
+      <Header />
       <Waiting>
         <div>
           <Outlet />

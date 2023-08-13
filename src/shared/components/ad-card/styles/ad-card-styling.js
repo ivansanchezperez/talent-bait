@@ -58,6 +58,7 @@ export const AdHeadLine = styled.input`
   border: none;
   font-size: 17px;
   background-color: transparent;
+  padding: 4px 16px 16px;
 `;
 
 export const AdImage = styled.div`

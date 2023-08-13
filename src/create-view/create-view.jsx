@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AdCard from "../shared/components/ad-card/ad-card";
 import {
   CreateButton,
@@ -15,6 +15,10 @@ const CreateView = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [editedAd, setEditedAd] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAdForm = (adForm) => {
     console.log("adFormCreate: ", adForm);
