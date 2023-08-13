@@ -31,19 +31,25 @@ This list of dependencies needs to be installed manually in your development env
    git clone https://github.com/your-username/your-project-name.git
    ```
 
-# Navigate to the project directory:
+## Navigate to the project directory:
 
-cd your-project-name
+```bash
+  cd your-project-name
+```
 
-# Install dependencies:
+## Install dependencies:
 
-npm install
+```bash
+ npm install
+```
 
 # Usage
 
 Run the development server to start the application:
 
-npm start
+```bash
+ npm start
+```
 
 Open your browser and navigate to http://localhost:3000 to view the application.
 
