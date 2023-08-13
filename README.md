@@ -25,16 +25,19 @@ This list of dependencies needs to be installed manually in your development env
 
 ## Installation
 
-1. Clone the repository:
+1. Go to GitHub:
+   https://github.com/ivansanchezperez/talent-bait
+
+2. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project-name.git
+   git clone https://github.com/your-username/talent-bait.git
    ```
 
 ## Navigate to the project directory:
 
 ```bash
-  cd your-project-name
+  cd talent-bait
 ```
 
 ## Install dependencies:
