@@ -11,7 +11,6 @@ import { getAbsolutePath } from "../../infrastructure/routing";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ id, image, name, description, price }) => {
-  const productAds = useSelector((state) => state.ads);
   const navigate = useNavigate();
 
   const handleNavigateToReadView = () => {
