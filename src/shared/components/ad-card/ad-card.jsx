@@ -40,6 +40,9 @@ const AdCard = ({
   };
   const [isFileInputVisible, setFileInputVisible] = useState(false);
   const [adForm, setAdForm] = useState(initialAdFormState);
+  const [selectedImageUrl, setSelectedImageUrl] = useState(
+    initialAdFormState.image
+  );
 
   const toggleFileInput = () => {
     setFileInputVisible(!isFileInputVisible);
@@ -49,7 +52,17 @@ const AdCard = ({
     if (!e.target.files || e.target.files.length === 0) {
       setFileInputVisible(false);
     }
-    // Handle the file upload logic here
+
+    const selectedFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setSelectedImageUrl(event.target.result);
+      const adFormNewValue = { ...adForm, image: event.target.result };
+      setAdForm(adFormNewValue);
+      setFileInputVisible(false);
+    };
+
+    reader.readAsDataURL(selectedFile);
   };
 
   const handleInputValues = (event, inputName) => {
@@ -105,10 +118,8 @@ const AdCard = ({
                   }
                 }}
               />
-              <img src={adForm.image} alt="logo" />
-              <AdEditButton
-                onClick={toggleFileInput} // Toggle the input on clicking the image
-              >
+              <img src={selectedImageUrl} alt="logo" />
+              <AdEditButton onClick={() => toggleFileInput()}>
                 <span>✏️</span>
               </AdEditButton>
             </div>
