@@ -1,9 +1,0 @@
-.read-view__no-ads {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.read-view__no-ads-text {
-  text-align: center;
-}

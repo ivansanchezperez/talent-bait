@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAdFinder } from "../shared/hooks";
 import { useSelector } from "react-redux";
@@ -10,18 +10,19 @@ import {
 import { useAppDispatch } from "../shared/store/store";
 import { updateAd } from "../shared/store/productsAdsReducer";
 import { toast } from "sonner";
+import { getAbsolutePath } from "../shared/infrastructure/routing";
 
 const EditView = () => {
   const params = useParams();
-  const productAdsStore = useSelector((state) => state.ads);
-  const [editedAd, setEditedAd] = useState(null);
-
-  const [productAds, setProductAds] = useState([]);
-  const { findAdById } = useAdFinder(productAdsStore);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const productAdsStore = useSelector((state) => state.ads);
+  const { findAdById } = useAdFinder(productAdsStore);
+
+  const [editedAd, setEditedAd] = useState(null);
+  const [productAds, setProductAds] = useState([]);
 
   useEffect(() => {
-    debugger;
     const ads = findAdById(params.adId);
     setProductAds(ads);
   }, []);
@@ -33,6 +34,7 @@ const EditView = () => {
   const emitSaveAdForm = () => {
     dispatch(updateAd(editedAd));
     toast.success("Changes were saved successfully");
+    navigate(getAbsolutePath("read-view") + `/${params.productId}`);
   };
 
   return (

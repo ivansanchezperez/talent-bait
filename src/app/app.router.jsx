@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import React from "react";
 import { getRelativePath } from "../shared/infrastructure/routing";
 import { AppLayout } from "./app.layout";
-import CreateView from "../create-view/create-view";
 
 const IndexViewPage = React.lazy(() => import("../index-view/index-view"));
 const ReadViewPage = React.lazy(() => import("../read-view/read-view"));

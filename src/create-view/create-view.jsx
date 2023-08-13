@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useAdFinder } from "../shared/hooks";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import AdCard from "../shared/components/ad-card/ad-card";
 import {
   CreateButton,
@@ -10,20 +8,13 @@ import {
 import { useAppDispatch } from "../shared/store/store";
 import { newAd } from "../shared/store/productsAdsReducer";
 import { toast } from "sonner";
+import { getAbsolutePath } from "../shared/infrastructure/routing";
 
 const CreateView = () => {
   const params = useParams();
-  const productAdsStore = useSelector((state) => state.ads);
-  const [editedAd, setEditedAd] = useState(null);
-
-  const [productAds, setProductAds] = useState([]);
-  const { findAdById } = useAdFinder(productAdsStore);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const ads = findAdById(params.adId);
-    setProductAds(ads);
-  }, []);
+  const navigate = useNavigate();
+  const [editedAd, setEditedAd] = useState(null);
 
   const handleAdForm = (adForm) => {
     console.log("adFormCreate: ", adForm);
@@ -33,6 +24,7 @@ const CreateView = () => {
   const emitSaveAdForm = () => {
     dispatch(newAd(editedAd));
     toast.success("New Ad created successfully");
+    navigate(getAbsolutePath("read-view") + `/${params.productId}`);
   };
 
   return (
