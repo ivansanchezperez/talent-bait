@@ -9,6 +9,10 @@ const routing = createRouting({
     relativePath: "index-view",
     absolutePath: "/index-view",
   },
+  "read-view": {
+    relativePath: "read-view",
+    absolutePath: "/read-view",
+  },
 });
 
 export const getRelativePath = (name) => {

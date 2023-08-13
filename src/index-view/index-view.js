@@ -9,6 +9,7 @@ const IndexView = () => {
       {productData.products.map((product) => {
         return (
           <ProductCard
+            id={product.id}
             image={product.productImage}
             name={product.productName}
             description={product.productDescription}

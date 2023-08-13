@@ -6,26 +6,16 @@ import {
   ProductCardName,
   ProductCardDescription,
   ProductCardPrice,
-} from "./styles/product-card-styling";
-import { getAbsolutePath } from "../../infrastructure/routing";
-import { useNavigate } from "react-router-dom";
+} from "./styles/ad-card-styling";
 
-const ProductCard = ({ id, image, name, description, price }) => {
+const AdCard = ({ image, name, description, price }) => {
   const productAds = useSelector((state) => state.ads);
-  const navigate = useNavigate();
-
-  const handleNavigateToReadView = () => {
-    const readViewPath = getAbsolutePath("read-view");
-    navigate(`${readViewPath}/${id}`);
-  };
 
   return (
     <ProductCardWrapper>
       <ProductCardImage bgimage={image} />
       <ProductCardInfoWrapper>
-        <ProductCardName onClick={handleNavigateToReadView}>
-          {name}
-        </ProductCardName>
+        <ProductCardName>{name}</ProductCardName>
         <ProductCardDescription>{description}</ProductCardDescription>
         <ProductCardPrice>{price}€</ProductCardPrice>
       </ProductCardInfoWrapper>
@@ -33,4 +23,4 @@ const ProductCard = ({ id, image, name, description, price }) => {
   );
 };
 
-export default ProductCard;
+export default AdCard;
