@@ -7,7 +7,11 @@ import { useAdFinder } from "./../shared/hooks";
 import { useSelector } from "react-redux";
 import { CreateButton } from "../shared/components/create-button/styles/create-button-styling";
 import AdCard from "../shared/components/ad-card/ad-card";
-import { TwoColumnGrid } from "./styles/read-view-styling";
+import {
+  TwoColumnGrid,
+  AdModalWrapper,
+  AdModalReadView,
+} from "./styles/read-view-styling";
 
 const ReadView = () => {
   const params = useParams();
@@ -29,14 +33,23 @@ const ReadView = () => {
         <TwoColumnGrid>
           {productAds.map((ad) => {
             return (
-              <AdCard
-                id={ad.id}
-                image={ad.content.image}
-                headline={ad.content.headline}
-                descriptionTitle={ad.content.descriptionTitle}
-                descriptionText={ad.content.descriptionText}
-                CTAText={ad.content.CTAText}
-              />
+              <AdModalWrapper>
+                <AdModalReadView>
+                  <div></div>
+                </AdModalReadView>
+                <div className="button-container">
+                  <button id="Edit">Edit</button>
+                  <button id="Delete">Delete</button>
+                </div>
+                <AdCard
+                  id={ad.id}
+                  image={ad.content.image}
+                  headline={ad.content.headline}
+                  descriptionTitle={ad.content.descriptionTitle}
+                  descriptionText={ad.content.descriptionText}
+                  CTAText={ad.content.CTAText}
+                />
+              </AdModalWrapper>
             );
           })}
         </TwoColumnGrid>
